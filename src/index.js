@@ -1,14 +1,14 @@
-/* eslint-disable linebreak-style */
 // change require to es6 import style
-
-// import $ from 'jquery';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import './style.scss';
 
-// eslint-disable-next-line linebreak-style
+// import $ from 'jquery';
+
+const App = () => <div className="test">All the REACT are belong to us!</div>;
 // const $ = require('jquery');
+ReactDOM.render(<App />, document.getElementById('main'));
 
-
-// $('#main').html('Here we go!');
 let num = 0;
 window.setInterval(() => {
   num += 1;
