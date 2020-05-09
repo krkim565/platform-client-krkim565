@@ -3,42 +3,46 @@ import {
 } from 'react-router-dom';
 import React from 'react';
 import '../style.scss';
-import Counter from './counter';
-import Controls from './controls';
-// mport ReactDOM from 'react-dom';
+import Posts from './allPosts';
+import NewPost from './createPost';
+import Post from './post';
 
-const About = (props) => {
-  return <div> All there is to know about me </div>;
-};
-const Welcome = (props) => {
-  return (
-    <div>Welcome
-      <Counter />
-      <Controls />
-    </div>
-
-
-  );
-};
-
-const Test = (props) => {
-  return <div> ID: {props.match.params.id} </div>;
-};
 
 const FallBack = (props) => {
-  return <div>URL Not Found</div>;
+  return <div className="fallback">Incorrect link</div>;
 };
 
 
 const Nav = (props) => {
   return (
-    <nav>
-      <ul>
-        <li><NavLink to="/" exact>Home</NavLink></li>
-        <li><NavLink to="/about">About</NavLink></li>
-        <li><NavLink to="/test/id1">test id1</NavLink></li>
-        <li><NavLink to="/test/id2">test id2</NavLink></li>
-      </ul>
+    <nav className="nav-bar">
+      <NavLink style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textDecoration: 'none',
+        color: 'white',
+        width: '10vw',
+        marginRight: '5px',
+      }}
+        exact
+        to="/"
+      >
+        My Recipedia
+      </NavLink>
+      <NavLink style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textDecoration: 'none',
+        color: 'white',
+        width: '10vw',
+        marginLeft: '5px',
+      }}
+        to="/posts/new"
+      >
+        Post Recipe
+      </NavLink>
     </nav>
   );
 };
@@ -49,9 +53,9 @@ const App = (props) => {
       <div>
         <Nav />
         <Switch>
-          <Route exact path="/" component={Welcome} />
-          <Route path="/about" component={About} />
-          <Route exact path="/test/:id" component={Test} />
+          <Route exact path="/" component={Posts} />
+          <Route path="/posts/new" component={NewPost} />
+          <Route exact path="/posts/:postID" component={Post} />
           <Route component={FallBack} />
         </Switch>
       </div>
