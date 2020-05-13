@@ -2,7 +2,6 @@ import axios from 'axios';
 
 const ROOT_URL = 'https://lab5-api.herokuapp.com/api';
 // const ROOT_URL = 'https://platform.cs52.me/api';
-// const ROOT_URL = 'http://localhost:9090/api';
 // const API_KEY = '?key=k_rangel';
 
 // keys for actiontypes
@@ -18,7 +17,6 @@ export const ActionTypes = {
 
 export function fetchPosts() { /* axios get */
   return (dispatch) => {
-    // `${ROOT_URL}/posts${API_KEY}`
     axios.get(`${ROOT_URL}/posts`)
       .then((response) => {
         dispatch({ type: ActionTypes.FETCH_POSTS, payload: response.data });
@@ -77,7 +75,6 @@ export function fetchPost(id) { /* axios get */
 
 export function deletePost(id, history) { /* axios delete */
   return (dispatch) => {
-    // `${ROOT_URL}/posts/${id}?${API_KEY}`
     axios.delete(`${ROOT_URL}/posts/${id}`)
       .then((response) => {
         dispatch({ type: ActionTypes.FETCH_POST, payload: response.data });
