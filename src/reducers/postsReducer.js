@@ -6,7 +6,7 @@ const initialState = {
   error: '',
   errorOccurred: false,
 };
-
+// might need to change ...state!
 const postsReducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.FETCH_POST:
