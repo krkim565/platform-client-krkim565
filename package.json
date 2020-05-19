@@ -10,7 +10,7 @@
     "test": "eslint src/**.js",
     "winbuild": "yarn clean & SET WEBPACK_ENV=production& webpack --colors",
     "clean": "rimraf dist",
-    "windeploy": "yarn build & surge -p dist -d kim-cs52-recipedia-api.surge.sh & yarn clean"
+    "windeploy": "yarn build & surge -p dist -d kim-cs52-recipedia-auth.surge.sh & yarn clean"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
