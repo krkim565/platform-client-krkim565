@@ -18,6 +18,10 @@ class NewPost extends Component {
     };
   }
 
+  componentDidMount() {
+    console.log(this.props.history);
+  }
+
   updateTitle = (event) => {
     this.setState({ tempTitle: event.target.value });
   }

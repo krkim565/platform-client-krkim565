@@ -12,6 +12,7 @@ class SignIn extends Component {
     this.state = {
       tempEmail: '',
       tempPassword: '',
+
     };
   }
 
@@ -23,12 +24,13 @@ class SignIn extends Component {
     this.setState({ tempPassword: event.target.value });
   }
 
+
   handleSave = () => {
     const user = {
       email: this.state.tempEmail,
       password: this.state.tempPassword,
     };
-    // prob need to change this or NOT
+
     this.props.signinUser(user, this.props.history);
   }
 

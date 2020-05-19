@@ -25,6 +25,7 @@ class Post extends Component {
 
   componentDidMount() {
     this.props.fetchPost(this.props.match.params.postID);
+
     this.setState({
       isLoading: false,
     });
@@ -85,8 +86,23 @@ class Post extends Component {
     this.props.history.push('/');
   }
 
+  authenticatedEdit() {
+    if (this.props.authenticated) {
+      return (
+        <div className="bottom-btns">
+          <Button variant="outline-info" size="lg" onClick={this.handleEdit}>Edit</Button>{' '}
+          <Button variant="outline-info" size="lg" onClick={this.handleDelete}>Delete</Button>{' '}
+        </div>
+      );
+    }
+    return null;
+  }
+
+  // this.props.currentPost.author == null
   renderSomeSection() {
-    if (this.state.isLoading) {
+    console.log(this.props.authenticated);
+    if (this.props.currentPost.author == null) {
+      console.log(this.props.currentPost.author);
       return (
         <div>
           Loading...
@@ -134,11 +150,9 @@ class Post extends Component {
               <Card.Text dangerouslySetInnerHTML={{ __html: marked(this.props.currentPost.content || '') }} />
             </Card.Body>
             <Card.Footer className="text-muted">{this.props.currentPost.coverUrl}</Card.Footer>
+            <Card.Footer className="text-muted">{this.props.currentPost.author.userName}</Card.Footer>
           </Card>
-          <div className="bottom-btns">
-            <Button variant="outline-info" size="lg" onClick={this.handleEdit}>Edit</Button>{' '}
-            <Button variant="outline-info" size="lg" onClick={this.handleDelete}>Delete</Button>{' '}
-          </div>
+          {this.authenticatedEdit()}
         </div>
       );
     }
@@ -161,6 +175,7 @@ class Post extends Component {
 function mapStateToProps(reduxState) {
   return {
     currentPost: reduxState.posts.current,
+    authenticated: reduxState.auth.authenticated,
   };
 }
 

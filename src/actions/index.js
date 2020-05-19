@@ -14,9 +14,7 @@ export const ActionTypes = {
   AUTH_USER: 'AUTH_USER',
   DEAUTH_USER: 'DEAUTH_USER',
   AUTH_ERROR: 'AUTH_ERROR',
-  // UPDATE_POST: 'UPDATE_POST',
-  // CREATE_POST: 'CREATE_POST',
-  // DELETE_POST: 'DELETE_POST',
+
 };
 
 export function fetchPosts() { /* axios get */
@@ -132,6 +130,7 @@ export function signupUser(user, history) {
       .then((response) => {
         dispatch({ type: ActionTypes.AUTH_USER });
         localStorage.setItem('token', response.data.token);
+        history.push('/');
       })
       .catch((error) => {
         dispatch(authError(`Sign Up Failed: ${error.response.data}`));
@@ -149,6 +148,7 @@ export function signupUser(user, history) {
 // and deauths
 export function signoutUser(history) {
   return (dispatch) => {
+    console.log(history);
     localStorage.removeItem('token');
     dispatch({ type: ActionTypes.DEAUTH_USER });
     history.push('/');

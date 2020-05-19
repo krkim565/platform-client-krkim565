@@ -12,6 +12,7 @@ class SignUp extends Component {
     this.state = {
       tempEmail: '',
       tempPassword: '',
+      tempUserName: '',
     };
   }
 
@@ -23,10 +24,15 @@ class SignUp extends Component {
     this.setState({ tempPassword: event.target.value });
   }
 
+  updateUserName = (event) => {
+    this.setState({ tempUserName: event.target.value });
+  }
+
   handleSave = () => {
     const user = {
       email: this.state.tempEmail,
       password: this.state.tempPassword,
+      userName: this.state.tempUserName,
     };
     // prob need to change this or NOT
     this.props.signupUser(user, this.props.history);
@@ -52,10 +58,14 @@ class SignUp extends Component {
             }}
           >
             <Form.Group controlId="exampleForm.ControlInput10">
+              <Form.Label style={{ color: 'white' }}>Username</Form.Label>
+              <Form.Control type="text" placeholder="Username" onChange={this.updateUserName} />
+            </Form.Group>
+            <Form.Group controlId="exampleForm.ControlInput11">
               <Form.Label style={{ color: 'white' }}>Email</Form.Label>
               <Form.Control type="email" placeholder="Email" onChange={this.updateEmail} />
             </Form.Group>
-            <Form.Group controlId="exampleForm.ControlInput11">
+            <Form.Group controlId="exampleForm.ControlInput12">
               <Form.Label style={{ color: 'white' }}>Password</Form.Label>
               <Form.Control type="password" placeholder="Password" onChange={this.updatePassword} />
             </Form.Group>
