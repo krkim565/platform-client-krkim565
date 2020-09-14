@@ -4,4 +4,4 @@
 3. EC: I handled axios errors by displaying to the user that the website is experiencing technical difficulties and that they should come back and check again in a few minutes. I tested my error handling by changing the root URL to something other than the correct URL. 
 
 # Version 2
-In this version of my app, users can sign up. Once they sign up, they can add, edit, and delete posts. Upon viewing an individual post, you can see the the username of the person who created the post.
+In this version of my app, I built a backend for the platform using express and MongoDB, and added authorization. The backend code can be found here: https://github.com/krkim565/platform-api-krkim565 and is deployed to https://lab5-api.herokuapp.com/. 
